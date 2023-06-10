@@ -53,8 +53,8 @@ while (!Player.Dead())
 		}
 	else if (Orion.InJournal("has declined your protection"))
 		{
-			Orion.CharPrint ('self', 44, target.Name() + " has declinded your protection")
-			Orion.SayGuild (target.Name() + " has declinded protection from " + Player.Name())
+			Orion.CharPrint ('self', 44, target.Name() + " has declined your protection")
+			Orion.SayGuild (target.Name() + " has declined protection from " + Player.Name())
 			Orion.ClearJournal();
 		}
 	else if (Orion.InJournal("You must wait a while before offering your protection again"))
