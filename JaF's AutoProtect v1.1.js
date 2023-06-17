@@ -29,7 +29,7 @@ while (!Player.Dead())
         Orion.WaitTargetObject(target.Serial())
         Orion.ShowStatusbar(target.Serial(),100,100);
         Orion.CloseStatusbar(target.Serial())
-		Orion.Wait(10000) // 10 seconds for them to accept before it moves on		
+		Orion.Wait(5000) // 5 seconds for them to accept before it moves on		
 		}
 	  }
 
