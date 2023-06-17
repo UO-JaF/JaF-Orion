@@ -1,5 +1,5 @@
 // JustanotherFace (JaF)'s Honor Champs
-// Ver: 1.0 Date: 06/01/2023
+// Ver: 1.1 Date: 06/01/2023
 //
 // This script will find champs when they spawn and attempt to honor them
 
