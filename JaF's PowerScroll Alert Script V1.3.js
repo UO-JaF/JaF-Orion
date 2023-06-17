@@ -1,5 +1,5 @@
 // JustanotherFace (JaF)'s PowerScroll Alert Script for Protectors
-// Ver: 1.2  Date: 04/01/2023
+// Ver: 1.3  Date: 04/01/2023
 // This script checks your backpack for Pink scrolls and alerts via Guild Chat 
 
 function Autostart() {
@@ -76,7 +76,7 @@ function Contents1(whites)
 		{
 		Orion.SayGuild("Who the fuck wasted my Justice with this shitty 105?")
 		}
-		Orion.AddIgnoreListObject('whiteScrollList', [itemSelected.Serial()]);        
+		Orion.AddIgnoreListObject('whiteScrollList', [itemSelected.Serial()], [prop]);        
 	}
 
 }
