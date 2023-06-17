@@ -1,5 +1,5 @@
 // JustanotherFace (JaF)'s Player Alert Bot
-// Ver: 1.4  Date: 06/09/2023
+// Ver: 1.5  Date: 06/09/2023 ©JaF_2023
 //
 // This script will hide your character (if you have hiding)
 // and search for players that you can see within 22 tiles of you.
