@@ -54,7 +54,7 @@ function JaF_PeaceKill() {
 		Orion.Wait(400)
         Orion.ClearJournal();
         target = Orion.FindType('-1', '-1', ground, 'mobile|live|ignorefriends|ignoreself|inlos', 10, 'gray|criminal')
-        if (target.length) {
+        if (target.length > 0) {
             for (var i = 0; i < target.length; i++) {
                 Orion.AddHighlightCharacter(target[i], '130');
                 tgtobj = Orion.FindObject(target[i]);
