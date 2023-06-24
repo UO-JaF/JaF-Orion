@@ -1,5 +1,5 @@
 // JustanotherFace (JaF)'s Honor Champs
-// Ver: 1.1 Date: 06/01/2023
+// Ver: 1.2 Date: 06/01/2023
 //
 // This script will find champs when they spawn and attempt to honor them
 
@@ -30,23 +30,27 @@ function honorChamp()
         if (champs.Hits("%") == 100)
         {
         	if (Orion.Contains(itemProperties, ("Revenant")))
+				{
+				Orion.Ignore(champs.Serial())
+				}
+			else
         	{
-        	
             Orion.WaitTargetObject(champs.Serial());
             Orion.InvokeVirtue("Honor");
             Orion.Wait(1000);
+			Orion.AddHighlightCharacter(champs.Serial(), '55', true)
+            Orion.ClearJournal()
+            Orion.CharPrint(champs.Serial(), 44, "I'm HONORED for you to kill me")
+            Orion.AddIgnoreListObject('ChampList', [champs.Serial()], [itemProperties]); //Orion.Ignore(itemSelected.Serial())
             var itemProperties = champs.Properties();
 			Orion.Wait(500)
+			}
+		}	
             if (Orion.InJournal("You started Honorable Combat"))
             	{
             	Orion.AddIgnoreListObject('ChampList', [champs.Serial()], [itemProperties]);
             	}
-            	Orion.AddHighlightCharacter(champs.Serial(), '55', true)
-            	Orion.ClearJournal()
-            	Orion.CharPrint(champs.Serial(), 44, "I'm HONORED for you to kill me")
-            	Orion.AddIgnoreListObject('ChampList', [champs.Serial()], [itemProperties]); //Orion.Ignore(itemSelected.Serial())
-            	//Orion.PauseScript('honorChamp');
-            	}
+        
             else if (Orion.InJournal("Target cannot be seen"))
             	{
             	Orion.CharPrint(champs.Serial(), 55, "Your Target Cannot Be Seen!")
@@ -63,14 +67,13 @@ function honorChamp()
                	Orion.ClearJournal()
             	Orion.CharPrint(champs.Serial(), 55, "Get Closer to your target you dummy!")
             	}
-           else if (Orion.InJournal("You are already under Honorable Combat with this target"))
+			else if (Orion.InJournal("You are already under Honorable Combat with this target"))
             	{
             	Orion.ClearJournal()
             	Orion.CharPrint(champs.Serial(), 44, "I'm STILL HONORED for you to kill me")
             	//Orion.PauseScript("honorChamp");
             	Orion.AddIgnoreListObject('ChampList', [champs.Serial()], [itemProperties]);
             	}
-        }
         else if (champs.Hits("%") != 100)
         {
         Orion.CharPrint ('self', 44, "Champ not at 100% health. Try again")
