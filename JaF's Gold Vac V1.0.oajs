@@ -1,0 +1,52 @@
+// JustanotherFace (JaF)'s Gold Vac Script
+// Ver: 1.0  Date: 06/22/2023 
+var thisrungold = (Orion.ShardName()+Player.Name()+'ThisRunGold');
+Orion.RegWrite(thisrungold, 0, 'Software\\OrionAssistant\\vars\\JAF\\Gold');
+function vacuum(){
+	if (Player.Weight () >= Player.MaxWeight ()+100) {
+		BagOfSending() }
+   	while(true && (!Player.Dead())){
+	Orion.FindType('0x0EED', '0xFFFF', 'ground', 'item|inlos|near', 2).forEach(function(gold){
+		Orion.MoveItem(gold, 0, backpack);
+		Orion.Wait(500);
+		if (Player.Weight () >= Player.MaxWeight ()+100) {
+			BagOfSending() }
+	else{ 
+	BagOfSending()
+	}
+	});
+  }
+}
+
+function BagOfSending () {
+var gtotal = 0
+if (Player.Weight () >= Player.MaxWeight ()+100) {
+   var bankedgold = (Orion.ShardName()+Player.Name()+'BankedGold');
+   var thisrungold = (Orion.ShardName()+Player.Name()+'ThisRunGold');
+   var gsent = (parseInt(Player.Gold()));
+   Orion.Wait(500)
+   
+   	if(parseInt(Orion.RegRead(bankedgold, 'Software\\OrionAssistant\\vars\\JAF\\Gold'))>0)
+	{
+		Orion.RegWrite(bankedgold,(parseInt(Orion.RegRead(bankedgold, 'Software\\OrionAssistant\\vars\\JAF\\Gold'))+ gsent), 'Software\\OrionAssistant\\vars\\JAF\\Gold');
+	}
+	else{
+		Orion.RegWrite(bankedgold,(gsent), 'Software\\OrionAssistant\\vars\\JAF\\Gold');
+		}
+	if(parseInt(Orion.RegRead(thisrungold, 'Software\\OrionAssistant\\vars\\JAF\\Gold'))>0)
+	{
+		Orion.RegWrite(thisrungold,(parseInt(Orion.RegRead(thisrungold, 'Software\\OrionAssistant\\vars\\JAF\\Gold'))+ gsent), 'Software\\OrionAssistant\\vars\\JAF\\Gold');
+	}
+	else{
+		Orion.RegWrite(thisrungold,(gsent), 'Software\\OrionAssistant\\vars\\JAF\\Gold');
+		}
+   Orion.Print('Gold sent to bank: ' + gsent);
+   Orion.Wait(500);
+   Orion.Print('All-Time Total Gold sent to bank:** ' + Orion.RegRead(bankedgold, 'Software\\OrionAssistant\\vars\\JAF\\Gold'));
+   Orion.Wait(500);
+   Orion.Print('This Run Gold sent to bank:** ' + Orion.RegRead(thisrungold, 'Software\\OrionAssistant\\vars\\JAF\\Gold'));
+   Orion.UseType('0x0E76');
+   Orion.Wait(300);
+   Orion.TargetType('0x0EED');
+ }
+}
